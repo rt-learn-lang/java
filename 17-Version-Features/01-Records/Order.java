@@ -8,17 +8,17 @@ import java.util.List;
 
 public record Order(long id, CustomerRecord customer, LocalDateTime dateTime, List<OrderLine> lines) {
 
-    // You can implement the canonical constructor yourself, for example to validate arguments or make defensive copies of mutable arguments.
-    public Order(long id, CustomerRecord customer, LocalDateTime dateTime, List<OrderLine> lines) {
-        // Validation of the arguments.
-        assert customer != null: "customer must not be null";
-        assert dateTime != null: "dateTime must not be null";
-        assert lines != null && !lines.isEmpty(): "lines must not be null or empty";
+	// You can implement the canonical constructor yourself, for example to validate arguments or make defensive copies of mutable arguments.
+	public Order(long id, CustomerRecord customer, LocalDateTime dateTime, List<OrderLine> lines) {
+		// Validation of the arguments.
+		assert customer != null: "customer must not be null";
+		assert dateTime != null: "dateTime must not be null";
+		assert lines != null && !lines.isEmpty(): "lines must not be null or empty";
 
-        // The canonical constructor must initialize all fields of the record.
-        this.id = id;
-        this.customer = customer;
-        this.dateTime = dateTime;
-        this.lines = List.copyOf(lines); // Making an unmodifiable defensive copy of the argument (which might be a mutable List).
-    }
+		// The canonical constructor must initialize all fields of the record.
+		this.id = id;
+		this.customer = customer;
+		this.dateTime = dateTime;
+		this.lines = List.copyOf(lines); // Making an unmodifiable defensive copy of the argument (which might be a mutable List).
+	}
 }
